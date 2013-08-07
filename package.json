@@ -1,0 +1,18 @@
+{
+  "name": "NodeJSHiring",
+  "version": "0.0.0",
+  "description": "Application for Node JS Hiring",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+    "dependencies":{
+      "express":"*",
+        "mongoose":"*",
+        "ejs":"*",
+        "async":"*",
+        "nodemailer":"*"
+    },
+  "author": "Shahab Ahmad Khan",
+  "license": "BSD"
+}

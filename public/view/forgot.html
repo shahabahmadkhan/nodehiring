@@ -1,0 +1,32 @@
+
+<style>
+    .input-group{
+        margin:10px;
+    }
+
+</style>
+<div class="main" style="width:600px; margin:0px 20% 50px 20%">
+<form id="Forgotform" ng-submit="submit()" ng-show="formVisible" class="css-form">
+    <fieldset>
+        <legend>Forgot Password</legend>
+
+
+        <div class="input-group">
+        <span class="input-group-addon">Your Registered Email :</span>
+        <input type="email" class="form-control" required="required" ng-change="toggleMsg()" ng-model="email" name="email" size="40" id="email" placeholder="" />
+            <span ng-show="Forgotform.email.$error.email">This is not a valid email!</span>
+        </div>
+
+    <div class="form">
+
+    <button type="submit" class="btn btn-success" ng-disabled="sendBtnDisable">Send New Password</button>
+    <button type="reset"class="btn btn-info">Reset</button>
+                 </div>
+    </fieldset>
+
+</form>
+    <br>
+    <pre ng-show="notify">{{notifyMsg}}</pre>
+
+
+</div>

@@ -1,0 +1,33 @@
+
+<style>
+    .input-group{
+        margin:10px;
+    }
+
+</style>
+
+<div class="main" style="width:600px; margin:0px 20% 50px 20%">
+    <pre ng-show="notify">{{notifyMsg}}</pre>
+<form id="ActivationForm" ng-submit="submit()" ng-show="formVisible" class="css-form">
+    <h2>Dear {{UserName}} , please set your password</h2>
+    <fieldset>
+        <div class="input-group">
+        <span class="input-group-addon">Enter New Password :</span>
+        <input type="password" class="form-control" required="required" ng-model="password" size="40" id="password" placeholder="" />
+    </div>
+        <div class="input-group">
+            <span class="input-group-addon">Confirm New Password :</span>
+            <input type="password" class="form-control dirty" required="required" ng-model="ConfirmPassword" size="40" id="ConfirmPassword" placeholder="" />
+        </div>
+
+
+    <div class="form-group">
+
+    <button type="submit" class="btn btn-success" ng-disabled="sendBtnDisable">{{submitText}}</button>
+    <button type="reset" class="btn btn-info">Reset</button>
+                 </div>
+    </fieldset>
+
+</form>
+
+    </div>

@@ -1,0 +1,33 @@
+
+<style>
+    .input-group{
+        margin:10px;
+    }
+
+</style>
+<div class="main" style="width:600px; margin:0px 20% 50px 20%">
+    <pre ng-show="notify">{{notifyMsg}}</pre>
+<form id="LoginForm" ng-submit="submit()" class="css-form">
+    <fieldset>
+        <legend>Login Panel</legend>
+
+
+        <div class="input-group">
+        <span class="input-group-addon">Email :</span>
+        <input type="email" class="form-control" required="required" ng-change="toggleMSG()" ng-model="email" size="40" id="email" placeholder="" />
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon">Password :</span>
+        <input type="password" required="required" class="form-control" ng-change="toggleMSG()" ng-model="password" size="40"  id="password" />
+    </div>
+
+    <div class="form">
+
+    <button type="submit" class="btn btn-success">Login</button>
+    <a href="#/forgotPassword" class="btn btn-info">Forgot Password</a>
+                 </div>
+    </fieldset>
+
+</form>
+
+    </div>
