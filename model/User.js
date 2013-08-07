@@ -10,6 +10,7 @@ var userSchema = new Schema({
     email: {type: String, required: true, trim: true, index: { unique: true } },
     password:{type: String, required: true},
     accountStatus:{type:String,require:true,trim:true},
+    userStatus:{type:Number,required:true,default:0},
     userType:{type:String,require:true,trim:true,Default:'Student'},
     age:{type:Number,min:18,max:100},
     mobile:{type:Number},

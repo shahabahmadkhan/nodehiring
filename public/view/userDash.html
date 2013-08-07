@@ -3,12 +3,25 @@
     .input-group{
         margin:10px;
     }
-
+    #accountStatus{
+        padding: 5px;
+        border-radius: 10px;
+    }
+    .main{
+        width: 100%;
+    }
 </style>
-
-<div class="main" style="width:600px; margin:0px 20% 50px 20%">
     <pre ng-show="notify">{{notifyMsg}}</pre>
 
-            Student Panel
-
+    <div class="panel" ng-show="showContainer">
+        <div class="panel-heading">Your Current Status:
+            <button type="button" class="btn btn-success btn-lg">{{currentState}}</button>
+        </div>
+         Your Next Step:
+        <button type="button" class="btn btn-info btn-lg">{{nextState}}</button>
+        <div ng-repeat="state in remainingStates" style="display: inline-block" >
+        <button type="button" class="btn btn-danger btn-xs">></button>
+        <button type="button" class="btn btn-default btn-lg">{{state}}</button>&nbsp;
+        </div>
     </div>
+

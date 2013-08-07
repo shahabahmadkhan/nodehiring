@@ -1,7 +1,16 @@
+function ActiveTab(tab,$rootScope){
+    $('#navUL li').removeClass();
+    $('#navUL li').eq(tab-1).addClass("active");
+}
+
+function getUserStatusArray(){
+    var status=['Registered','Account Activated','Resume Upload','Pre-Challenge','Wait For Interview','Interview','Accepted/Rejected'];
+    return status;
+}
+
 function LoginController($http,$scope,$location,$rootScope){
     //Active Tabs
-    $rootScope.loginActive="active";
-    $rootScope.aboutActive=$rootScope.homeActive="";
+    ActiveTab('2');
 
 
     $scope.notify=false;
@@ -31,7 +40,7 @@ function LoginController($http,$scope,$location,$rootScope){
                     else
                     {
                         $rootScope.currentUser=data.email;
-                        $location.path('/dashboard/student')
+                        $location.path('/dashboard/user')
 
                     }
                 }
@@ -46,65 +55,84 @@ function LoginController($http,$scope,$location,$rootScope){
 function ValidLoginController($scope){
 
 }
-function DefaultController($rootScope){
+function DefaultController($rootScope,$scope){
     //Active Tabs
-    $rootScope.homeActive="active";
-    $rootScope.aboutActive=$rootScope.loginActive="";
-
-
+    ActiveTab('1');
 }
 
 function NavController($scope,$rootScope){
     //Active Tabs
-    $rootScope.homeActive="active";
-    $rootScope.aboutActive="";
-    $rootScope.loginActive="";
+    $rootScope.nav1="active";
+    $rootScope.nav2="";
+    $rootScope.nav3="";
 }
-function AboutController($rootScope){
-    //Active Tabs
-    $rootScope.aboutActive="active";
-    $rootScope.homeActive=$rootScope.loginActive="";
 
-}
 function SuccessController($scope){
     $scope.message="Action Completed Successfully";
 }
-function AdminDashController($scope,$http,$rootScope,$location){
-    if ($rootScope.email!=null)
-    {
-        $http({
-            url:'/checkUserSession',
-            method:'POST',
-            data:{'email':$rootScope.email}
-        }).success(function(data){
-                $scope.notify=true;
-                if (data=="valid")
-                {
-                 $scope.notifyMsg='This Session Is Valid';
-                }
-                else if(data=='invalid')
-                {
-                $scope.notifyMsg='Invalid Session';
-                }
-                else
-                {
-                    $location.path('/');
-                }
-
-
-
-            });
-
-    }
-    else
-    {
-        $location.path('/');
-    }
-
-    $scope.message="Hello Admin";
+function checkUserSession($http){
+    return $http({
+        url:'/checkUserSession',
+        method:'GET'
+    });
+//        .success(function(data){
+//            return data;
+//
+//        });
 }
-function StudentDashController($scope){
-    $scope.message="Hello Admin";
+
+function AdminDashController($scope,$http,$rootScope,$location){
+    checkUserSession($http).success(function(data){
+        if (data=='invalid')
+        {
+            $scope.showContainer=false;
+            $scope.notify=true;
+            $scope.notifyMsg='Invalid Session...Please Login !!!';
+
+        }
+        else if (data.userType=='Administrator')
+        {
+            $scope.showContainer=true;
+
+            $("#navUL li").remove();
+            var dashBoard="<a href='#/dashboard/admin'>DashBoard</a>";
+            var WelcomeHTML="Welcome <span style='color:red'>"+data.name+"</span>";
+            $("#navUL").append("<li class='active'>"+dashBoard+"</li>");
+            $("#navUL").append("<li>"+WelcomeHTML+"</li>");
+            $("#navUL").append("<li><a href='#/logout'>Logout</a></li>");
+        }
+        else
+            $location.path('/');
+
+    });
+}
+function UserDashController($scope,$rootScope,$location,$http){
+    checkUserSession($http).success(function(data){
+        if (data=='invalid')
+        {
+            $scope.showContainer=false;
+            $scope.notify=true;
+            $scope.notifyMsg='Invalid User Session...Please Login !!!';
+        }
+        else if (data.userType=='User')
+        {
+            $scope.showContainer=true;
+            var states=getUserStatusArray();
+            $scope.currentState=states[data.userStatus];
+            $scope.nextState=states[data.userStatus+1];
+            $scope.remainingStates=states.slice(data.userStatus+2);
+
+            $("#navUL li").remove();
+            var dashBoard="<a href='#/dashboard/user'>DashBoard</a>";
+            var WelcomeHTML="Welcome <span style='color:red'>"+data.name+"</span>";
+            $("#navUL").append("<li class='active'>"+dashBoard+"</li>");
+            $("#navUL").append("<li>"+WelcomeHTML+"</li>");
+            $("#navUL").append("<li><a href='#/logout'>Logout</a></li>");
+        }
+        else
+            $location.path('/');
+
+    });
 }
 
 
@@ -155,7 +183,9 @@ function AddViewController($scope){
 
 }
 
-function ActivateController($scope,$routeParams,$http){
+function ActivateController($scope,$routeParams,$http,$rootScope){
+    $rootScope.logoutTab=false;
+
     $scope.submit=function(){
         if ($scope.password!==$scope.ConfirmPassword)
         {
@@ -250,10 +280,7 @@ function AddController($scope,$routeParams,$http,$location,$rootScope){
 }
 
 function RegController($scope,$routeParams,$http,$location,$rootScope){
-    //Active Tabs
-    $scope.homeActive="active";
-    $scope.aboutActive=$scope.loginActive="";
-
+    $rootScope.logoutTab=false;
 
     $scope.checkPassword = function () {
         if ($scope.registerForm.confirmPass!==$scope.registerForm.pass)
@@ -383,10 +410,21 @@ function DeleteController($http,$scope,$location,$routeParams,$rootScope){
 
 
 }
-function LogoutController($scope,$rootScope){
-    $scope.message="You Have Successfully Logged Out";
-    $rootScope.myswitch=false;
+function LogoutController($scope,$rootScope,$http){
+    $http({
+        url:'/logout',
+        method:'GET'
+    }).success(function(data){
+
+            $("#navUL li").remove();
+            var tab2="<a href='#/login'>View Application</a>";
+            $("#navUL").append("<li ng-model='nav1' class='tab1'><a href='#/'>Home</a></li>" +
+                "<li ng-model='nav2' class='tab2'><a href='#/login'>View Application</a></li>");
+            $scope.notifyMsg="You Have Successfully Logged Out";
+
+        });
 }
+
 function ViewController($scope,$http,$location,$rootScope){
     $scope.editRecord=function(val){
         $location.path('/edit/'+val);

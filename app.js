@@ -36,8 +36,9 @@ api.initDB();
 app.get('/',HomeControl.showPage);
 app.post('/ApplyNow',api.createUser);
 app.post('/login',api.loginUser);
+app.get('/logout',api.logoutUser);
 app.post('/forgotPassword',api.forgotPassword);
 app.post('/activate',api.activateUser);
 app.post('/activateUser',api.getActivateUser);
-app.post('/checkUserSession',api.checkUserSession);
+app.get('/checkUserSession',api.checkUserSession);
 

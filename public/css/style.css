@@ -39,7 +39,7 @@ textarea { overflow: auto; }
 #navigation ul li a:hover ,
 #navigation ul li.active a { color: #2C33CF; text-decoration: none; }
 
-.main { padding-top: 0px; margin-top: 0px  }
+.main { padding-top: 0px; margin-top: 0px; min-height: 400px  }
 .main h2 { font-size: 24px; line-height: 24px;  font-weight: normal; color: #424242; }
 .main h2 strong { font-weight: bold; }
 .main h3 { font-size: 22px; line-height: 22px; color: #000; font-weight: normal; }

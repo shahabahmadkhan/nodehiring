@@ -3,11 +3,18 @@
     .input-group{
         margin:10px;
     }
-
 </style>
 
-<div class="main" style="width:600px; margin:0px 20% 50px 20%" ng-controller="AdminDashController">
+<div class="main" style="width:1000px">
     <pre ng-show="notify">{{notifyMsg}}</pre>
-    Admin Control Panel
+    <div id="container" ng-show="showContainer">
+        <ul class="nav nav-pills">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Messages</a></li>
+        </ul>
 
-    </div>
+</div>
+
+
+</div>

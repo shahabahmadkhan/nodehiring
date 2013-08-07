@@ -1,8 +1,6 @@
 var User = require('../model/User.js');
 var nodemailer = require("nodemailer");
 var crypto = require('crypto');
-//Initiaizing User Session To Null
-var userSession=null;
 
 function encrypt(text){
     var cipher = crypto.createCipher('aes-256-cbc','d6F3Efeq');
@@ -38,6 +36,7 @@ exports.initDB=function(){
                     email:"nodehiring@gmail.com",
                     password:crypto.createHash('sha1').update("igdefault").digest("hex"),
                     accountStatus:"Activated",
+                    userStatus:1,
                     userType:"Administrator",
                     age:"24",
                     mobile:"8287494252",
@@ -74,7 +73,6 @@ var smtpTransport = nodemailer.createTransport("SMTP",{
 });
 
 exports.loginUser=function(req,res){
-    console.log(req.body);
     var cryptedPass=crypto.createHash('sha1').update(req.body.password).digest("hex");
     User.findOne({email:req.body.email,password:cryptedPass},function(err,data){
         if (err)
@@ -91,6 +89,7 @@ exports.loginUser=function(req,res){
             }
             else
             {
+                req.session.UserName=data.name;
                 req.session.UserSession=data.email;
                 req.session.UserType=data.userType;
                 res.send(data);
@@ -103,9 +102,14 @@ exports.loginUser=function(req,res){
 }
 
 exports.checkUserSession=function(req,res){
-    if (req.session.UserSession===req.body.email)
+    if (req.session.UserSession)
     {
-        res.send(req.session.UserType);
+        User.findOne({email:req.session.UserSession},{password:0},function(err,data){
+            console.log(data);
+            res.send(data);
+
+        });
+
 
     }
     else
@@ -131,10 +135,10 @@ exports.activateUser=function(req,res){
             }
             else //if email found
             {
-               if (data.accountStatus=='Registered') //if already activated
+               if (data.accountStatus=='Registered')
                {
                    var cryptedPass=crypto.createHash('sha1').update(req.body.password).digest("hex");
-                   User.update({email:data.email},{password:cryptedPass,accountStatus:'Activated'},function(err,data){
+                   User.update({email:data.email},{password:cryptedPass,accountStatus:'Activated',userStatus:1},function(err,data){
                        if (err)
                        {
                            res.send('error');
@@ -147,7 +151,7 @@ exports.activateUser=function(req,res){
                    });
 
                }
-                else// if not activated then show form to activate it
+                else
                {
                    res.send('Activated');
                }
@@ -276,6 +280,7 @@ exports.createUser = function(req, res) {
         education:req.body.education,
         studentType:req.body.studentType,
         resumeFile:req.body.file,
+        userType:'User',
         cvLink:null
 
     };
@@ -300,6 +305,7 @@ exports.createUser = function(req, res) {
         mobile:UserData.mobile,
         education:UserData.education,
         studentType:UserData.studentType,
+        userType:UserData.userType,
         cvLink:UserData.cvLink
     }).save(function(err){
             console.log('Creation');
@@ -328,4 +334,14 @@ exports.createUser = function(req, res) {
             }
 
         });
+}
+
+exports.logoutUser=function(req,res){
+    if (req.session) {
+        req.session.UserSession = null;
+        req.session.UserType=null;
+        req.session.destroy(function() {});
+    }
+    res.send('loggedOut');
+
 }
