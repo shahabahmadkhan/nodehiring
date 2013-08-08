@@ -39,7 +39,7 @@ textarea { overflow: auto; }
 #navigation ul li a:hover ,
 #navigation ul li.active a { color: #2C33CF; text-decoration: none; }
 
-.main { padding-top: 0px; margin-top: 0px; min-height: 400px  }
+.main { padding-top: 0px; margin-top: 0px; min-height: 400px}
 .main h2 { font-size: 24px; line-height: 24px;  font-weight: normal; color: #424242; }
 .main h2 strong { font-weight: bold; }
 .main h3 { font-size: 22px; line-height: 22px; color: #000; font-weight: normal; }
@@ -112,8 +112,10 @@ box-shadow: 1px 1px 3px rgba(0,0,0,0.5) ; -moz-box-shadow: 1px 1px 3px rgba(0,0,
 .main .featured .entry a:hover em { display: block; }
 
 html, body { height: 100%; }
-#wrapper { min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -279px; }
-#footer, #footer-push {  height: 245px; padding-top: 32px;  }
+#wrapper { margin: 0 auto; }
+#footer, #footer-push {
+    /*height: 245px;*/
+    padding-top: 32px;  }
 
 #footer h4 { color: #fff; font-size: 15px; font-weight: bold; text-transform: uppercase; padding-bottom: 22px; }
 #footer { background: url(images/footer.png) repeat-x 0 0; }

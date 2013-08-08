@@ -7,6 +7,7 @@ angular.module('nodeHiring', []).
             when('/forgotPassword', {templateUrl: 'view/forgot.html',   controller: ForgotController}).
             when('/activate/:id', {templateUrl: 'view/activate.html',   controller: ActivateController}).
             when('/dashboard/admin', {templateUrl: 'view/adminDash.html',   controller: AdminDashController}).
+            when('/dashboard/admin/updateProfile', {templateUrl: 'view/updateAdminProfile.html',   controller: UpdateAdminProfileController}).
             when('/dashboard/user', {templateUrl: 'view/userDash.html',   controller: UserDashController}).
             when('/add', {templateUrl: 'view/add.html',   controller: AddController}).
             when('/edit/:user', {templateUrl: 'view/edit.html',   controller: EditController}).

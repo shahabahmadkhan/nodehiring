@@ -90,7 +90,7 @@ exports.loginUser=function(req,res){
             else
             {
                 req.session.UserName=data.name;
-                req.session.UserSession=data.email;
+                req.session.UserSession=data._id;
                 req.session.UserType=data.userType;
                 res.send(data);
             }
@@ -104,7 +104,7 @@ exports.loginUser=function(req,res){
 exports.checkUserSession=function(req,res){
     if (req.session.UserSession)
     {
-        User.findOne({email:req.session.UserSession},{password:0},function(err,data){
+        User.findOne({_id:req.session.UserSession},{password:0},function(err,data){
             console.log(data);
             res.send(data);
 
@@ -335,6 +335,70 @@ exports.createUser = function(req, res) {
 
         });
 }
+
+
+exports.updateProfile = function(req, res) {
+
+   //Common data for all
+    var UserData={
+        name:req.body.name,
+        email:req.body.email,
+        age:req.body.age,
+        mobile:req.body.mobile
+    }
+
+    //Selective Data
+    if (req.body.password)
+    UserData.password=req.body.password;
+
+    if (req.body.education)
+    UserData.education=req.body.education;
+
+    if (req.body.studentType)
+    UserData.studentType=req.studentType;
+
+    if (req.body.expYear)
+    UserData.expYear=req.body.expYear;
+
+    if (req.body.userType)
+    UserData.userType=req.body.userType;
+
+    if (req.body.userStatus)
+    UserData.userStatus=req.body.userStatus;
+
+    if (req.body.accountStatus)
+    UserData.accountStatus=req.body.accountStatus;
+
+    //Whom To Update?
+    if (req.body.target!='self')
+        targetId=req.body.target;
+    else
+        targetId=req.session.UserSession;
+
+
+    //Update Process Starts
+
+
+    User.update({_id:targetId},UserData,function(err,data){
+
+        if (err)
+        {
+            res.send('error');
+        }
+        else
+        {
+            res.send('success');
+        }
+
+    });
+
+
+
+
+
+}
+
+
 
 exports.logoutUser=function(req,res){
     if (req.session) {

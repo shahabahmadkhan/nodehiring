@@ -10,6 +10,79 @@
     .main{
         width: 100%;
     }
+    .animate-enter {
+        -webkit-animation: enter 600ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
+        animation: enter 600ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
+        display: block;
+        position: relative;
+    }
+    @-webkit-keyframes enter {
+        from {
+            opacity: 0;
+            height: 0px;
+            left: -70px;
+        }
+        75% {
+            left: 15px;
+        }
+        to {
+            opacity: 1;
+            height: 30px;
+            left: 0px;
+        }
+    }
+    @keyframes enter {
+        from {
+            opacity: 0;
+            height: 0px;
+            left: -70px;
+        }
+        75% {
+            left: 15px;
+        }
+        to {
+            opacity: 1;
+            height: 30px;
+            left: 0px;
+        }
+    }
+
+    .animate-leave {
+        -webkit-animation: leave 600ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
+        animation: leave 600ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
+        display: block;
+        position: relative;
+    }
+    @-webkit-keyframes leave {
+        to {
+            opacity: 0;
+            height: 0px;
+            left: -70px;
+        }
+        25% {
+            left: 15px;
+        }
+        from {
+            opacity: 1;
+            height: 30px;
+            left: 0px;
+        }
+    }
+    @keyframes leave {
+        to {
+            opacity: 0;
+            height: 0px;
+            left: -70px;
+        }
+        25% {
+            left: 15px;
+        }
+        from {
+            opacity: 1;
+            height: 30px;
+            left: 0px;
+        }
+    }
 </style>
     <pre ng-show="notify">{{notifyMsg}}</pre>
 
@@ -19,7 +92,7 @@
         </div>
          Your Next Step:
         <button type="button" class="btn btn-info btn-lg">{{nextState}}</button>
-        <div ng-repeat="state in remainingStates" style="display: inline-block" >
+        <div ng-repeat="state in remainingStates" style="display: inline-block" ng-animate="'animate'">
         <button type="button" class="btn btn-danger btn-xs">></button>
         <button type="button" class="btn btn-default btn-lg">{{state}}</button>&nbsp;
         </div>

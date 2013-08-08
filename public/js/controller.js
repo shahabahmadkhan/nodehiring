@@ -81,7 +81,57 @@ function checkUserSession($http){
 //        });
 }
 
-function AdminDashController($scope,$http,$rootScope,$location){
+function UpdateAdminProfileController($scope,$http,$rootScope){
+    $scope.submit=function(){
+
+        if ($scope.password!==$scope.ConfirmPassword)
+        {
+            $scope.notify=true;
+            $scope.notifyMsg="Password Do Not Match";
+        }
+        else
+        {
+
+            $scope.sendBtnDisable=true;
+            $scope.submitText="Processing Your Request";
+
+            var payload={
+                name:$scope.name,
+                age:$scope.age,
+                mobile:$scope.mobile,
+                email:$scope.email,
+                password:$scope.password,
+                target:'self'
+            };
+            $http({
+                url:'/manageUser',
+                method:'PUT',
+                data:payload
+            }).success(function(data,status,headers,config){
+                    $scope.notify = true;
+                    if (data=='error')
+                    {           $scope.sendBtnDisable=false;
+
+                        $scope.submitText="Update";
+
+                        $scope.notifyMsg="Email Already Exists !!!";
+                    }
+                    else if(data=='success')
+                    {        $scope.showContainer = false;
+
+                        $scope.notifyMsg="Your Profile Has Been Successfully Updated."
+
+                    }
+
+
+                });
+        }
+
+    };
+
+
+    $scope.notify=false;
+
     checkUserSession($http).success(function(data){
         if (data=='invalid')
         {
@@ -92,14 +142,50 @@ function AdminDashController($scope,$http,$rootScope,$location){
         }
         else if (data.userType=='Administrator')
         {
-            $scope.showContainer=true;
+            setTopNav('admin',data);
 
-            $("#navUL li").remove();
-            var dashBoard="<a href='#/dashboard/admin'>DashBoard</a>";
-            var WelcomeHTML="Welcome <span style='color:red'>"+data.name+"</span>";
-            $("#navUL").append("<li class='active'>"+dashBoard+"</li>");
-            $("#navUL").append("<li>"+WelcomeHTML+"</li>");
-            $("#navUL").append("<li><a href='#/logout'>Logout</a></li>");
+            $scope.sendBtnDisable=false;
+            $scope.submitText="Update";
+
+            $scope.name=data.name;
+            $scope.age=data.age;
+            $scope.email=data.email;
+            $scope.mobile=data.mobile;
+            $scope.showContainer=true;
+        }
+        else
+            $location.path('/');
+    });
+
+
+}
+
+function setTopNav(user,data){
+    $("#navUL li").remove();
+    var link="#/dashboard/"+user;
+    var dashBoard="<a href="+link+">DashBoard</a>";
+    var WelcomeHTML="Welcome <span style='color:red'>"+data.name+"</span>";
+    $("#navUL").append("<li class='active'>"+dashBoard+"</li>");
+    $("#navUL").append("<li>"+WelcomeHTML+"</li>");
+    $("#navUL").append("<li><a href='#/logout'>Logout</a></li>");
+
+
+}
+function AdminDashController($scope,$http,$rootScope,$location){
+    checkUserSession($http).success(function(data){
+        console.log(data);
+        if (data=='invalid')
+        {
+            $scope.showContainer=false;
+            $scope.notify=true;
+            $scope.notifyMsg='Invalid Session...Please Login !!!';
+
+        }
+        else if (data.userType=='Administrator')
+        {
+            $scope.showContainer=true;
+            setTopNav('admin',data);
+
         }
         else
             $location.path('/');
@@ -121,13 +207,7 @@ function UserDashController($scope,$rootScope,$location,$http){
             $scope.currentState=states[data.userStatus];
             $scope.nextState=states[data.userStatus+1];
             $scope.remainingStates=states.slice(data.userStatus+2);
-
-            $("#navUL li").remove();
-            var dashBoard="<a href='#/dashboard/user'>DashBoard</a>";
-            var WelcomeHTML="Welcome <span style='color:red'>"+data.name+"</span>";
-            $("#navUL").append("<li class='active'>"+dashBoard+"</li>");
-            $("#navUL").append("<li>"+WelcomeHTML+"</li>");
-            $("#navUL").append("<li><a href='#/logout'>Logout</a></li>");
+            setTopNav('user',data);
         }
         else
             $location.path('/');
@@ -282,13 +362,6 @@ function AddController($scope,$routeParams,$http,$location,$rootScope){
 function RegController($scope,$routeParams,$http,$location,$rootScope){
     $rootScope.logoutTab=false;
 
-    $scope.checkPassword = function () {
-        if ($scope.registerForm.confirmPass!==$scope.registerForm.pass)
-        {
-
-        }
-        $scope.registerForm.confirmPass.$error.dontMatch = $scope.registerForm.pass !== $scope.registerForm.confirmPass;
-    };
 
     //Initializing form variables
     $scope.notify = false;

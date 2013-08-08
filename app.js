@@ -41,4 +41,5 @@ app.post('/forgotPassword',api.forgotPassword);
 app.post('/activate',api.activateUser);
 app.post('/activateUser',api.getActivateUser);
 app.get('/checkUserSession',api.checkUserSession);
+app.put('/manageUser',api.updateProfile);
 
