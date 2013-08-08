@@ -369,7 +369,7 @@ exports.updateProfile = function(req, res) {
     UserData.education=req.body.education;
 
     if (req.body.studentType)
-    UserData.studentType=req.studentType;
+    UserData.studentType=req.body.studentType;
 
     if (req.body.expYear)
     UserData.expYear=req.body.expYear;
@@ -394,7 +394,6 @@ exports.updateProfile = function(req, res) {
 
 
     User.update({_id:targetId},UserData,function(err,data){
-
         if (err)
         {
             res.send('error');

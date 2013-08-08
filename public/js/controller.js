@@ -170,6 +170,9 @@ function UpdateProfileController($scope,$http,$rootScope,$location){
                 mobile:$scope.mobile,
                 email:$scope.email,
                 password:$scope.password,
+                education:$scope.education,
+                expYear:$scope.expYear,
+                studentType:$scope.studentType,
                 target:'self'
             };
             $http({
@@ -183,7 +186,7 @@ function UpdateProfileController($scope,$http,$rootScope,$location){
 
                         $scope.submitText="Update";
 
-                        $scope.notifyMsg="Email Already Exists !!!";
+                        $scope.notifyMsg="Database Error";
                     }
                     else if(data=='success')
                     {        $scope.showContainer = false;
@@ -200,6 +203,11 @@ function UpdateProfileController($scope,$http,$rootScope,$location){
 
 
     $scope.notify=false;
+    $scope.toggle = function() {
+
+        $scope.isVisible = ! $scope.isVisible;
+
+    };
 
     checkUserSession($http).success(function(data){
         if (data=='invalid')
@@ -209,7 +217,26 @@ function UpdateProfileController($scope,$http,$rootScope,$location){
             if (data.userType=='Administrator')
                 setTopNav('admin',data);
             else
+            {
                 setTopNav('user',data);
+
+                $scope.studentType=data.studentType;
+                if ($scope.studentType=='Fresher')
+                {
+                    $scope.expYear="6-months";
+                    $scope.isVisible=false;
+                }
+                else
+                {
+                    $scope.expYear=data.expYear;
+                    $scope.isVisible=true;
+                }
+                console.log(data);
+                $scope.emailDisable=true;
+                $scope.nameDisable=true;
+                $scope.education=data.education;
+
+            }
 
 
             $scope.sendBtnDisable=false;
