@@ -1,0 +1,50 @@
+
+<style>
+    .input-group{
+        margin:10px;
+    }
+    #showContainer{
+        background: white;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+    }
+</style>
+<script type="text/javascript"></script>
+<pre ng-show="notify">{{notifyMsg}}</pre>
+<div model="showContainer" id="showContainer">
+    <h2>List Of Applications:</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>Name</th>
+                <th>Contact No.</th>
+                <th>Student Type</th>
+                <th>Experience</th>
+                <th>Account Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in rows" ng-class="getClass(row)">
+                <td>{{$index+1}}</td>
+                <td>{{row.name}}</td>
+                <td>{{row.mobile}}</td>
+                <td>{{row.studentType}}</td>
+                <td>{{row.expYear}}</td>
+                <td>{{row.accountStatus}}</td>
+                <td><!-- Single button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">View/Update</a></li>
+                            <li><a href="#">Delete</a></li>
+                        </ul>
+                    </div></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

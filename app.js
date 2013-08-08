@@ -34,12 +34,14 @@ api.initDB();
 
 //Request Handler
 app.get('/',HomeControl.showPage);
-app.post('/ApplyNow',api.createUser);
 app.post('/login',api.loginUser);
 app.get('/logout',api.logoutUser);
 app.post('/forgotPassword',api.forgotPassword);
 app.post('/activate',api.activateUser);
 app.post('/activateUser',api.getActivateUser);
 app.get('/checkUserSession',api.checkUserSession);
+
+app.get('/manageUser',api.getUsers);
+app.post('/manageUser',api.createUser);
 app.put('/manageUser',api.updateProfile);
 

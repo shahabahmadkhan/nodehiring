@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68ac8c02-eab7-47a6-9434-860fc5f68488" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/view/updateAdminProfile.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/bootstrap.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/view/updateUserProfile.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/view/viewApplications.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/view/updateAdminProfile.html" afterPath="$PROJECT_DIR$/public/view/updateProfile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/User.js" afterPath="$PROJECT_DIR$/model/User.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/view/adminDash.html" afterPath="$PROJECT_DIR$/public/view/adminDash.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/angular.min.js" afterPath="$PROJECT_DIR$/public/js/angular.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/api.js" afterPath="$PROJECT_DIR$/controller/api.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controller.js" afterPath="$PROJECT_DIR$/public/js/controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/view/header.ejs" afterPath="$PROJECT_DIR$/public/view/header.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/module.js" afterPath="$PROJECT_DIR$/public/js/module.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/view/userDash.html" afterPath="$PROJECT_DIR$/public/view/userDash.html" />
@@ -16,15 +21,15 @@
     <ignored path="nodehiring.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/package.json" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375419818239" ignored="false" />
-    <file path="/app.js" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375940695053" ignored="false" />
+    <file path="/app.js" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375947084919" ignored="false" />
     <file path="/Dummy.txt" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375937599852" ignored="false" />
     <file path="/User.js" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375869961803" ignored="false" />
     <file path="$PROJECT_DIR$/../loginpanel/.idea/workspace.xml" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375275721408" ignored="false" />
     <file path="/a.dummy" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375265461417" ignored="false" />
     <file path="/UserController.js" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375418586644" ignored="false" />
     <file path="/index.html" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375350289734" ignored="false" />
-    <file path="/module.js" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375891154087" ignored="false" />
-    <file path="/controller.js" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375942250267" ignored="false" />
+    <file path="/module.js" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375945507227" ignored="false" />
+    <file path="/controller.js" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375949884556" ignored="false" />
     <file path="$PROJECT_DIR$/../loginpanel/public/js/modules.js" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375335888112" ignored="false" />
     <file path="/default.html" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375356640195" ignored="false" />
     <file path="$PROJECT_DIR$/../angular/public/home.html" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375338160267" ignored="false" />
@@ -32,10 +37,10 @@
     <file path="/style.css" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375942963689" ignored="false" />
     <file path="/register.html" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375788468960" ignored="false" />
     <file path="/HomeController.js" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375785350725" ignored="false" />
-    <file path="/header.ejs" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375867847679" ignored="false" />
+    <file path="/header.ejs" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375948998715" ignored="false" />
     <file path="/default.ejs" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375351558646" ignored="false" />
     <file path="/index.ejs" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375355772184" ignored="false" />
-    <file path="/api.js" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375942603398" ignored="false" />
+    <file path="/api.js" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375947572605" ignored="false" />
     <file path="/login.html" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375889549239" ignored="false" />
     <file path="/forgot.html" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375763543842" ignored="false" />
     <file path="/activate.html" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375701864472" ignored="false" />
@@ -44,8 +49,9 @@
     <file path="/about.html" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375766692362" ignored="false" />
     <file path="/upload.html" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375781553413" ignored="false" />
     <file path="/register.ejs" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375785620060" ignored="false" />
-    <file path="/userDash.html" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375937899892" ignored="false" />
+    <file path="/userDash.html" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375945111976" ignored="false" />
     <file path="/updateAdminProfile.html" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375943131404" ignored="false" />
+    <file path="/viewApplications.html" changelist="68ac8c02-eab7-47a6-9434-860fc5f68488" time="1375949751701" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,9 +74,9 @@
       <file leaf-file-name="controller.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="178" column="32" selection-start="4679" selection-end="4692" vertical-scroll-proportion="3.4444444">
+            <state line="107" column="0" selection-start="3103" selection-end="3103" vertical-scroll-proportion="0.29774126">
               <folding>
-                <marker date="1375942251190" expanded="true" signature="4256:4265" placeholder="..." />
+                <marker date="1375949893206" expanded="true" signature="715:724" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -79,7 +85,7 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="33" selection-start="1435" selection-end="1435" vertical-scroll-proportion="0.0">
+            <state line="43" column="20" selection-start="1375" selection-end="1385" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -88,7 +94,52 @@
       <file leaf-file-name="api.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="67" selection-start="2465" selection-end="2465" vertical-scroll-proportion="38.57143">
+            <state line="122" column="40" selection-start="3210" selection-end="3210" vertical-scroll-proportion="-11.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/User.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="66" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adminDash.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/view/adminDash.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="38" selection-start="234" selection-end="239" vertical-scroll-proportion="-6.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="module.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/module.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="120" selection-start="1103" selection-end="1103" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewApplications.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/view/viewApplications.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="63" selection-start="810" selection-end="810" vertical-scroll-proportion="-12.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.ejs" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/view/header.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="32" selection-start="884" selection-end="884" vertical-scroll-proportion="-5.519231">
               <folding />
             </state>
           </provider>
@@ -112,22 +163,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/public/view/forgot.html" />
         <option value="$PROJECT_DIR$/public/view/activate.html" />
         <option value="$PROJECT_DIR$/public/view/logout.html" />
         <option value="$PROJECT_DIR$/public/view/studentDash.html" />
-        <option value="$PROJECT_DIR$/public/view/header.ejs" />
-        <option value="$PROJECT_DIR$/model/User.js" />
         <option value="$PROJECT_DIR$/public/view/login.html" />
         <option value="$PROJECT_DIR$/public/js/angular.min.js" />
-        <option value="$PROJECT_DIR$/public/js/module.js" />
-        <option value="$PROJECT_DIR$/public/view/userDash.html" />
-        <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/public/js/controller.js" />
-        <option value="$PROJECT_DIR$/public/view/adminDash.html" />
-        <option value="$PROJECT_DIR$/controller/api.js" />
         <option value="$PROJECT_DIR$/public/view/updateAdminProfile.html" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
+        <option value="$PROJECT_DIR$/public/view/adminDash.html" />
+        <option value="$PROJECT_DIR$/public/view/userDash.html" />
+        <option value="$PROJECT_DIR$/public/js/module.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/controller/api.js" />
+        <option value="$PROJECT_DIR$/model/User.js" />
+        <option value="$PROJECT_DIR$/public/view/header.ejs" />
+        <option value="$PROJECT_DIR$/public/view/viewApplications.html" />
+        <option value="$PROJECT_DIR$/public/js/controller.js" />
       </list>
     </option>
   </component>
@@ -311,11 +362,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/view" />
       <recent name="$PROJECT_DIR$/public/css" />
+      <recent name="$PROJECT_DIR$/public/js" />
+      <recent name="$PROJECT_DIR$/public/view" />
       <recent name="$PROJECT_DIR$/controller" />
       <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/public/js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/controller" />
@@ -481,90 +532,10 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/model/User.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="57" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/UserController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="19" selection-start="576" selection-end="576" vertical-scroll-proportion="0.53977275" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/angular.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="87" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/view/index.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="17" selection-start="96" selection-end="96" vertical-scroll-proportion="-0.625" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/view/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="174" selection-end="991" vertical-scroll-proportion="-17.5" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="106" selection-start="713" selection-end="713" vertical-scroll-proportion="0.22222222">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/view/activate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="49" selection-start="63" selection-end="63" vertical-scroll-proportion="0.022403259">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/view/adminDash.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="1190" selection-end="1190" vertical-scroll-proportion="1.3690476">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="67" selection-start="2465" selection-end="2465" vertical-scroll-proportion="38.57143">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="33" selection-start="1435" selection-end="1435" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="38" selection-start="6996" selection-end="6996" vertical-scroll-proportion="0.45585215">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/view/logout.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/view/updateAdminProfile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="54" selection-start="2301" selection-end="2301" vertical-scroll-proportion="0.60271317">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#fieldset#0;n#form#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -575,18 +546,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/view/updateUserProfile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="79" selection-start="26" selection-end="47" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="191" column="18" selection-start="10233" selection-end="10233" vertical-scroll-proportion="1.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/view/userDash.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="29" selection-start="1749" selection-end="1795" vertical-scroll-proportion="0.43289226">
+        <state line="102" column="108" selection-start="2711" selection-end="2711" vertical-scroll-proportion="-13.375">
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/User.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="66" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/view/adminDash.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="38" selection-start="234" selection-end="239" vertical-scroll-proportion="-6.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/view/updateProfile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="54" selection-start="2301" selection-end="2301" vertical-scroll-proportion="1.0386965">
+          <folding>
+            <element signature="n#style#0;n#div#6;n#fieldset#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="121" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/view/header.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="32" selection-start="884" selection-end="884" vertical-scroll-proportion="-5.519231">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="20" selection-start="1375" selection-end="1385" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="40" selection-start="3210" selection-end="3210" vertical-scroll-proportion="-11.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/view/viewApplications.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="63" selection-start="810" selection-end="810" vertical-scroll-proportion="-12.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="120" selection-start="1103" selection-end="1103" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="178" column="32" selection-start="4679" selection-end="4692" vertical-scroll-proportion="3.4444444">
+        <state line="107" column="0" selection-start="3103" selection-end="3103" vertical-scroll-proportion="0.29774126">
           <folding>
-            <marker date="1375942251190" expanded="true" signature="4256:4265" placeholder="..." />
+            <marker date="1375949893206" expanded="true" signature="715:724" placeholder="..." />
           </folding>
         </state>
       </provider>

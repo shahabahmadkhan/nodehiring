@@ -11,7 +11,7 @@ var userSchema = new Schema({
     password:{type: String, required: true},
     accountStatus:{type:String,require:true,trim:true},
     userStatus:{type:Number,required:true,default:0},
-    userType:{type:String,require:true,trim:true,Default:'Student'},
+    userType:{type:String,require:true,trim:true,Default:'User'},
     age:{type:Number,min:18,max:100},
     mobile:{type:Number},
     education:String,

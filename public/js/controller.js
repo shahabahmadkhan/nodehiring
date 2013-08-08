@@ -1,3 +1,4 @@
+//Defining ReUsable Functions To Be Used In Different Controller
 function ActiveTab(tab,$rootScope){
     $('#navUL li').removeClass();
     $('#navUL li').eq(tab-1).addClass("active");
@@ -7,6 +8,26 @@ function getUserStatusArray(){
     var status=['Registered','Account Activated','Resume Upload','Pre-Challenge','Wait For Interview','Interview','Accepted/Rejected'];
     return status;
 }
+
+function invalidSession($scope){
+    $scope.showContainer=false;
+    $scope.notify=true;
+    $scope.notifyMsg='Invalid Session...Please Login !!!';
+}
+
+function setTopNav(user,data){
+    $("#navUL li").remove();
+    var link="#/dashboard/"+user;
+    var dashBoard="<a href="+link+">DashBoard</a>";
+    var WelcomeHTML="Welcome <span style='color:red'>"+data.name+"</span>";
+    $("#navUL").append("<li class='active'>"+dashBoard+"</li>");
+    $("#navUL").append("<li>"+WelcomeHTML+"</li>");
+    $("#navUL").append("<li><a href='#/logout'>Logout</a></li>");
+
+
+}
+
+//Defining Controllers Now..
 
 function LoginController($http,$scope,$location,$rootScope){
     //Active Tabs
@@ -52,9 +73,6 @@ function LoginController($http,$scope,$location,$rootScope){
 
     };
 }
-function ValidLoginController($scope){
-
-}
 function DefaultController($rootScope,$scope){
     //Active Tabs
     ActiveTab('1');
@@ -67,8 +85,59 @@ function NavController($scope,$rootScope){
     $rootScope.nav3="";
 }
 
-function SuccessController($scope){
-    $scope.message="Action Completed Successfully";
+function ViewApplicationController($http,$scope,$rootScope,$location){
+
+    checkUserSession($http).success(function(data){
+        if (data=='invalid')
+            invalidSession($scope);
+        else if (data.userType!=null)
+        {
+            if (data.userType=='Administrator')
+                setTopNav('admin',data);
+            else
+                setTopNav('user',data);
+
+            //After Setting Container and Nav Bar Display List Of users
+            $scope.getClass = function (person) {
+                switch(person.accountStatus)
+                {
+                    case 'Activated':return "warning";break;
+                    case 'Registered':return "danger"; break;
+                    default:return "active";
+                }
+            };
+
+            $http({
+                url:'/manageUser',
+                method:'GET'
+            }).success(function(data2){
+                    console.log(data2);
+                    if (data2=='invalidSession')
+                        invalidSession($scope);
+                    else if (data2==null)
+                    {
+                       $scope.notify=true;
+                        $scope.notifyMsg="No Applications In The Database"
+                    }
+                    else
+                    {
+                        $scope.showContainer=true;
+                        $scope.rows=data2;
+
+                    }
+
+
+
+                });
+
+
+
+        }
+        else
+            $location.path('/');
+    });
+
+
 }
 function checkUserSession($http){
     return $http({
@@ -81,7 +150,7 @@ function checkUserSession($http){
 //        });
 }
 
-function UpdateAdminProfileController($scope,$http,$rootScope){
+function UpdateProfileController($scope,$http,$rootScope,$location){
     $scope.submit=function(){
 
         if ($scope.password!==$scope.ConfirmPassword)
@@ -134,15 +203,14 @@ function UpdateAdminProfileController($scope,$http,$rootScope){
 
     checkUserSession($http).success(function(data){
         if (data=='invalid')
+            invalidSession($scope);
+        else if (data.userType!=null)
         {
-            $scope.showContainer=false;
-            $scope.notify=true;
-            $scope.notifyMsg='Invalid Session...Please Login !!!';
+            if (data.userType=='Administrator')
+                setTopNav('admin',data);
+            else
+                setTopNav('user',data);
 
-        }
-        else if (data.userType=='Administrator')
-        {
-            setTopNav('admin',data);
 
             $scope.sendBtnDisable=false;
             $scope.submitText="Update";
@@ -160,27 +228,11 @@ function UpdateAdminProfileController($scope,$http,$rootScope){
 
 }
 
-function setTopNav(user,data){
-    $("#navUL li").remove();
-    var link="#/dashboard/"+user;
-    var dashBoard="<a href="+link+">DashBoard</a>";
-    var WelcomeHTML="Welcome <span style='color:red'>"+data.name+"</span>";
-    $("#navUL").append("<li class='active'>"+dashBoard+"</li>");
-    $("#navUL").append("<li>"+WelcomeHTML+"</li>");
-    $("#navUL").append("<li><a href='#/logout'>Logout</a></li>");
 
-
-}
 function AdminDashController($scope,$http,$rootScope,$location){
     checkUserSession($http).success(function(data){
-        console.log(data);
         if (data=='invalid')
-        {
-            $scope.showContainer=false;
-            $scope.notify=true;
-            $scope.notifyMsg='Invalid Session...Please Login !!!';
-
-        }
+            invalidSession($scope);
         else if (data.userType=='Administrator')
         {
             $scope.showContainer=true;
@@ -195,11 +247,7 @@ function AdminDashController($scope,$http,$rootScope,$location){
 function UserDashController($scope,$rootScope,$location,$http){
     checkUserSession($http).success(function(data){
         if (data=='invalid')
-        {
-            $scope.showContainer=false;
-            $scope.notify=true;
-            $scope.notifyMsg='Invalid User Session...Please Login !!!';
-        }
+            invalidSession($scope);
         else if (data.userType=='User')
         {
             $scope.showContainer=true;
@@ -216,9 +264,7 @@ function UserDashController($scope,$rootScope,$location,$http){
 }
 
 
-function HomeController($scope){
 
-}
 function ForgotController($scope,$http,$rootScope){
     //Active Tabs
     $rootScope.homeActive="";
@@ -257,9 +303,6 @@ function ForgotController($scope,$http,$rootScope){
             });
 
     }
-
-}
-function AddViewController($scope){
 
 }
 
@@ -344,20 +387,6 @@ function ActivateController($scope,$routeParams,$http,$rootScope){
 }
 
 
-function AddController($scope,$routeParams,$http,$location,$rootScope){
-    $scope.submit=function(){
-        var payload={name:$scope.name,age:$scope.age,mobile:$scope.mobile,email:$scope.email,pass:$scope.password}
-        $http({
-            url:'/adduser',
-            method:'POST',
-            data:payload
-        }).success(function(data){
-                $location.path('/success');
-            });
-
-    };
-
-}
 
 function RegController($scope,$routeParams,$http,$location,$rootScope){
     $rootScope.logoutTab=false;
@@ -400,7 +429,7 @@ function RegController($scope,$routeParams,$http,$location,$rootScope){
             studentType:$scope.studentType
         };
             $http({
-            url:'/ApplyNow',
+            url:'/manageUser',
             method:'POST',
             data:payload
         }).success(function(data,status,headers,config){

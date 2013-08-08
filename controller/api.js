@@ -119,6 +119,20 @@ exports.checkUserSession=function(req,res){
 
 }
 
+exports.getUsers=function(req,res){
+    if (req.session.UserSession)
+    {
+     User.find({userType:'User'},{password:0},function(err,data){
+         if (err)
+             res.send('error');
+         else
+            res.send(data);
+     });
+    }
+    else
+    res.send('invalidSession');
+}
+
 exports.activateUser=function(req,res){
     var email=decrypt(req.body.email);
     User.findOne({email:email},function(err,data){
@@ -349,7 +363,7 @@ exports.updateProfile = function(req, res) {
 
     //Selective Data
     if (req.body.password)
-    UserData.password=req.body.password;
+    UserData.password=crypto.createHash('sha1').update(req.body.password).digest("hex");
 
     if (req.body.education)
     UserData.education=req.body.education;

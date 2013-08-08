@@ -154,3 +154,44 @@ html, body { height: 100%; }
 #footer p.copy { float: right; color: #353535; }
 #footer p.copy a { color: #3f3f3f; text-decoration: underline; }
 #footer p.copy a:hover { text-decoration: none; }
+
+.DashBoard{
+    margin: 0 auto;
+}
+.dashBox{
+    -radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+
+    -moz-box-shadow:2px 2px 0 #C6E5E7;
+    -webkit-box-shadow:2px 2px 0 #C6E5E7;
+    box-shadow:2px 2px 0 #C6E5E7;
+
+    background: -moz-linear-gradient(19% 75% 90deg, #CAEAFF, #e2f2ff);
+
+    background: -webkit-gradient(linear, left top, left bottom, from(#e2f2ff), to(#CAEAFF));
+
+    color:#637897;
+    font-family:arial,helvetica,sans-serif;
+    font-size:18px;
+    font-weight:bold;
+    text-shadow:1px 1px 0 rgba(255, 255, 255, 0.7);
+    text-transform:uppercase;
+    text-align: center;
+    border: 1px solid #C6E5E7;
+    padding: 20px;
+    margin:30px;
+}
+.dashBox a:hover{
+}
+.dashBox:hover{
+    color:blue;
+    background: -moz-linear-gradient(19% 75% 90deg, #e2f2ff, #CAEAFF);
+
+    background: -webkit-gradient(linear, left top, left bottom, from(#CAEAFF), to(#e2f2ff));
+
+}
+a.boxes {
+    text-decoration: none !important;
+}
+
